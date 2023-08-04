@@ -1,6 +1,8 @@
 package config
 
 import (
+	"fmt"
+
 	"github.com/caarlos0/env/v9"
 	"github.com/joho/godotenv"
 )
@@ -43,9 +45,9 @@ type Session struct {
 }
 
 func LoadConfig() (cfg Config, err error) {
-	err = godotenv.Load("../../.env")
+	err = godotenv.Load(".env")
 	if err != nil {
-		return
+		fmt.Print("Error loading .env file")
 	}
 	err = env.Parse(&cfg)
 	return

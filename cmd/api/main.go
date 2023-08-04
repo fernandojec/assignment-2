@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/fernandojec/assignment-2/domain/users"
@@ -12,12 +13,10 @@ import (
 )
 
 func main() {
-	err := godotenv.Load("../../.env")
+	err := godotenv.Load(".env")
 	// err = godotenv.Load(filepath.Join("./", ".env"))
 	if err != nil {
-		// fmt.Printf("Error load env:%v", err)
-		log.Fatalf("Cannot get env :%v", err)
-
+		fmt.Print("Error loading .env file")
 	}
 	dbx, err := dbconnect.ConnectSqlx(dbconnect.DBConfig{
 		Host:       utils.GetEnv("POSTGRES_HOST"),

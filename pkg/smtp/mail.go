@@ -41,7 +41,6 @@ func SendMail(req Mail) (err error) {
 		utils.GetEnv("CONFIG_AUTH_EMAIL"),
 		utils.GetEnv("CONFIG_AUTH_PASSWORD"),
 	)
-
 	err = dialer.DialAndSend(mailer)
 
 	if err != nil {
